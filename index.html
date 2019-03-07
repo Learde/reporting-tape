@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Reporting Tape</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="/build/libs/vue.js"></script>
+</head>
+<body>
+    <div id="reporting-tape">
+        <textarea v-model='reportText' name="Report" id="report"></textarea>
+        <button v-on:click='publishReport'>Опубликовать</button>
+
+        <report
+            v-for='report in reports'
+            v-bind:key='report.id'
+            v-bind:id='report.id'
+            v-bind:date='report.date'
+            v-bind:text='report.text'
+            v-on:remove='deleteReport'
+        ></report>
+    </div>
+
+    <!--  custom scripts -->
+    <script src="node_modules/showdown/dist/showdown.min.js"></script>
+    <script src="/build/js/all.min.js"></script>
+</body>
+</html>
